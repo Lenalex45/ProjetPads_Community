@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add/Edit Person</title> <!--Définit le titre de la page. Il apparaîtra dans l'onglet du navigateur-->
+</head>
+<body>
+    <h1>{{ title }}</h1> <!--variable dynamique passée au template. Elle sera remplacée par une valeur réelle lors du rendu de la page-->
+    <form method="POST"> <!--Définit un formulaire HTML avec la méthode "POST", qui enverra les données du formulaire au serveur-->
+        <label for="name">Name:</label> <!--Crée un label pour le champ de saisie du nom-->
+        <input type="text" id="name" name="name" value="{{ person.name if person else '' }}" required><br><br> <!--Définit un champ de saisie pour le nom. Si l'objet person existe et a une propriété name, sa valeur est affichée dans le champ. Sinon, le champ reste vide. L'attribut required indique que le champ doit être rempli pour soumettre le formulaire-->
+        <input type="submit" value="Submit"> <!--deux sauts de ligne-->
+    </form>
+
+    <a href="{{ url_for('index') }}">Back to List</a> <!-- Crée un lien pour retourner à la liste principale. {{ url_for('index') }} génère l'URL pour la route 'index' dans le framework Flask.Quand Flask traite ce template, {{ url_for('index') }} est remplacé par l'URL correspondante que gère la fonction index. Cela permet de créer un lien qui, quand on clique dessus, ramène l'utilisateur à la page d'accueil ou à la liste principale de l'application.-->
+</body>
+</html>

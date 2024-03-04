@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"> <!--ouvre la balise racine HTML et définit la langue du document comme anglais-->
+
+
+<head> <!--ouvre la section de l'en-tête du document HTML-->
+    <meta charset="UTF-8"> <!--Définit l'encodage des caractères du document, inclut la plupart des caractères de différentes langues-->
+    <title>People Manager</title> <!--Définit le titre de la page, qui apparaît dans l'onglet du navigateur-->
+</head> <!--Ferme la section de l'en-tête-->
+
+
+
+<body> <!--Ouvre le corps du document-->
+    <h1>People List</h1> <!--titre 1-->
+    <a href="{{ url_for('add_person') }}">Add New Person</a> <!--Crée un lien hypertexte pour ajouter une nouvelle personne. {{ url_for('add_person') }} syntaxe spécifique à Flask pour générer dynamiquement l'URL associée à la fonction 'add_person'-->
+    <ul> <!--Commence une liste non ordonnée-->
+        {% for person in people %} <!--parcourt chaque 'person' dans la liste 'people'.-->
+        <li> <!--Débute un élément de liste-->
+            {{ person.name }} <!--Affiche l'attribut name de l'objet person. Cette syntaxe indique que le nom est une variable dynamique injectée dans le template-->
+        </li>
+        {% else %}
+        <li>No people found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
